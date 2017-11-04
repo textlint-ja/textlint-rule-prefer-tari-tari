@@ -1,12 +1,11 @@
 // MIT © 2017 azu
 "use strict";
 import { JapaneseParser } from "nlcst-parse-japanese";
-import { PatternMatcher, match } from "nlcst-pattern-match";
+import { match, PatternMatcher } from "nlcst-pattern-match";
 
 const japaneseParser = new JapaneseParser();
 const StringSource = require("textlint-util-to-string");
 const nlcstToString = require("nlcst-to-string");
-const hasTariWord = word => {};
 const report = context => {
     const { Syntax, RuleError, getSource, fixer, report } = context;
     return {
@@ -15,38 +14,47 @@ const report = context => {
                 const matcher = new PatternMatcher({
                     parser: japaneseParser
                 });
-                const TARI = [
-                    {
-                        type: "WordNode",
-                        data: {
-                            pos: "動詞",
-                            pos_detail_1: "自立"
-                        }
-                    },
-                    {
-                        type: "WordNode",
-                        data: {
-                            pos: "助詞",
-                            surface_form: ["だり", "たり"]
-                        }
+                const 動詞 = {
+                    type: "WordNode",
+                    data: {
+                        pos: "動詞",
+                        pos_detail_1: "自立"
                     }
-                ];
-                const VERB = [
-                    {
-                        type: "WordNode",
-                        data: {
-                            pos: "動詞",
-                            pos_detail_1: "自立"
-                        }
+                };
+                const たり = {
+                    type: "WordNode",
+                    data: {
+                        pos: "助詞",
+                        surface_form: ["だり", "たり"]
                     }
-                ];
+                };
+                const する = {
+                    type: "WordNode",
+                    data: {
+                        basic_form: "する"
+                    }
+                };
+                const TARI_SURU = matcher.tag`${動詞}${たり}${する}`;
+                const TARI = matcher.tag`${動詞}${たり}`;
+                const VERB = matcher.tag`${動詞}`;
                 const source = new StringSource(node);
                 const text = source.toString();
                 const CST = japaneseParser.parse(text);
                 const sentences = CST.children[0].children;
+                const isSameNode = (resultsA, resultsB) => {
+                    return resultsA.some(resultA => {
+                        return resultsB.some(resultB => {
+                            return resultB.index === resultA.index;
+                        });
+                    });
+                };
                 sentences.forEach(sentence => {
                     const tariResults = matcher.matchCST(sentence, TARI);
-                    console.log(tariResults);
+                    const tariSuruResults = matcher.matchCST(sentence, TARI_SURU);
+                    // `${動詞}${たり}` かつ `${動詞}${たり}${する}` の場合は除外
+                    if (isSameNode(tariResults, tariSuruResults)) {
+                        return;
+                    }
                     if (tariResults.length === 1) {
                         const suru = matcher.matchCST(sentence, VERB);
                         const afterSuru = suru.find(suru => {
@@ -67,7 +75,7 @@ const report = context => {
                             return;
                         }
                         // report
-                        console.log(afterSuru.nodeList);
+                        // console.log(afterSuru.nodeList);
                         report(
                             node,
                             new RuleError(`EERR`, {

@@ -54,7 +54,7 @@ tester.run("textlint-rule-prefer-tari-tari", rule, {
             text: "プログラムを書いたり、文章を書いている",
             errors: [
                 {
-                    index: 13
+                    index: 14
                 }
             ]
         },
