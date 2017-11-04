@@ -5,6 +5,7 @@ const rule = require("../src/textlint-rule-prefer-tari-tari");
 const tester = new TextLintTester();
 tester.run("textlint-rule-prefer-tari-tari", rule, {
     valid: [
+        "晴れたり泣いたり あとは時々 歌ってみたり",
         "プログラムを書いたり、提出する文章を書いたりする",
         "トイレに行ったり、ご飯を食べたりする時間もない。",
         "テレビを見たり、トイレに行ったり、ご飯を食べたりする時間もない。",
