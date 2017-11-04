@@ -6,34 +6,35 @@ import { match, PatternMatcher } from "nlcst-pattern-match";
 const japaneseParser = new JapaneseParser();
 const StringSource = require("textlint-util-to-string");
 const nlcstToString = require("nlcst-to-string");
+// definition
+const 動詞 = {
+    type: "WordNode",
+    data: {
+        pos: "動詞",
+        pos_detail_1: "自立"
+    }
+};
+const たり = {
+    type: "WordNode",
+    data: {
+        pos: "助詞",
+        surface_form: ["だり", "たり"]
+    }
+};
+const する = {
+    type: "WordNode",
+    data: {
+        basic_form: "する"
+    }
+};
 const report = context => {
-    const { Syntax, RuleError, getSource, fixer, report } = context;
+    const { Syntax, RuleError, report } = context;
     return {
         [Syntax.Paragraph](node) {
             return japaneseParser.ready().then(() => {
                 const matcher = new PatternMatcher({
                     parser: japaneseParser
                 });
-                const 動詞 = {
-                    type: "WordNode",
-                    data: {
-                        pos: "動詞",
-                        pos_detail_1: "自立"
-                    }
-                };
-                const たり = {
-                    type: "WordNode",
-                    data: {
-                        pos: "助詞",
-                        surface_form: ["だり", "たり"]
-                    }
-                };
-                const する = {
-                    type: "WordNode",
-                    data: {
-                        basic_form: "する"
-                    }
-                };
                 const TARI_SURU = matcher.tag`${動詞}${たり}${する}`;
                 const TARI = matcher.tag`${動詞}${たり}`;
                 const VERB = matcher.tag`${動詞}`;
