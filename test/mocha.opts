@@ -1,1 +1,2 @@
 --require textlint-scripts/register
+--timeout 5000

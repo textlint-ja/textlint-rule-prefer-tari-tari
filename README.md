@@ -1,4 +1,4 @@
-# textlint-rule-prefer-tari-tari
+# textlint-rule-prefer-tari-tari [![Build Status](https://travis-ci.org/textlint-ja/textlint-rule-prefer-tari-tari.svg?branch=master)](https://travis-ci.org/textlint-ja/textlint-rule-prefer-tari-tari)
 
 「〜たり〜たりする」をチェックするtextlintルール
 
