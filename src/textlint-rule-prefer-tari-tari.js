@@ -41,6 +41,10 @@ const report = context => {
                 const source = new StringSource(node);
                 const text = source.toString();
                 const CST = japaneseParser.parse(text);
+                // Ignore empty Paragraph. Ex) '<p></p>'
+                if (typeof CST.children === "undefined" || CST.children.length == 0) {
+                    return;
+                }
                 const sentences = CST.children[0].children;
                 const isSameNode = (resultsA, resultsB) => {
                     return resultsA.some(resultA => {
@@ -79,9 +83,12 @@ const report = context => {
                         // console.log(afterSuru.nodeList);
                         report(
                             node,
-                            new RuleError(`例示・並列・対表現において、片方の動詞が「〜たり」表現な場合は、もう片方の動詞も「〜たり」とします。`, {
-                                index: source.originalIndexFromIndex(afterSuru.position.index)
-                            })
+                            new RuleError(
+                                `例示・並列・対表現において、片方の動詞が「〜たり」表現な場合は、もう片方の動詞も「〜たり」とします。`,
+                                {
+                                    index: source.originalIndexFromIndex(afterSuru.position.index)
+                                }
+                            )
                         );
                     }
                 });
