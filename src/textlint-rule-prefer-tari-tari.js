@@ -41,6 +41,10 @@ const report = context => {
                 const source = new StringSource(node);
                 const text = source.toString();
                 const CST = japaneseParser.parse(text);
+                // Ignore empty Paragraph. Ex) '<p></p>'
+                if (typeof CST.children === "undefined" || CST.children.length == 0) {
+                    return;
+                }
                 const sentences = CST.children[0].children;
                 const isSameNode = (resultsA, resultsB) => {
                     return resultsA.some(resultA => {
