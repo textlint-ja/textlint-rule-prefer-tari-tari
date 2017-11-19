@@ -84,7 +84,7 @@ const report = context => {
                         report(
                             node,
                             new RuleError(`例示・並列・対表現において、片方の動詞が「〜たり」表現な場合は、もう片方の動詞も「〜たり」とします。`, {
-                                    index: source.originalIndexFromIndex(afterSuru.position.index)
+                                index: source.originalIndexFromIndex(afterSuru.position.index)
                             })
                         );
                     }
