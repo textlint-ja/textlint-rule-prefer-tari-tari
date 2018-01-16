@@ -102,7 +102,7 @@ textlint --rule prefer-tari-tari README.md
 
 一方、「〜たり」の表現はかなり多用であるため、誤検知があるかもしれません。
 
-- [「(～たり、) ～たりする」文の意味・用法について](http://dspace.lib.kanazawa-u.ac.jp/dspace/bitstream/2297/1885/1/AA11546136-5-1.pdf "AA11546136-5-1.pdf")
+- [「(～たり、) ～たりする」文の意味・用法について](http://hdl.handle.net/2297/1885)
 
 ## Reference
 
@@ -110,7 +110,7 @@ textlint --rule prefer-tari-tari README.md
 > 「日本語では『～たり～たりする』という形になる傾向がある」というように覚えたりしておく程度が、無難なのではないでしょうか。
 
 - [「～たり～たりする」？ | ことば（放送用語） - 最近気になる放送用語 | NHK放送文化研究所](https://www.nhk.or.jp/bunken/summary/kotoba/term/132.html "「～たり～たりする」？ | ことば（放送用語） - 最近気になる放送用語 | NHK放送文化研究所")
-- [「(～たり、) ～たりする」文の意味・用法について](http://dspace.lib.kanazawa-u.ac.jp/dspace/bitstream/2297/1885/1/AA11546136-5-1.pdf "AA11546136-5-1.pdf")
+- [「(～たり、) ～たりする」文の意味・用法について](http://hdl.handle.net/2297/1885)
 - [Japanese Grammar - 〜たり〜たりする | PuniPuniJapan](http://www.punipunijapan.com/japanese-grammar-tari-tari/ "Japanese Grammar - 〜たり〜たりする | PuniPuniJapan")
 - [～たり、～たり【JLPT N5 Grammar】 | 日本語の例文](http://j-nihongo.com/tari/ "～たり、～たり【JLPT N5 Grammar】 | 日本語の例文")
 
