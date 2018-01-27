@@ -36,9 +36,9 @@
   "homepage": "https://github.com/textlint-ja/textlint-rule-prefer-tari-tari",
   "devDependencies": {
     "husky": "^0.14.3",
-    "lint-staged": "^4.3.0",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.7.4",
-    "textlint-scripts": "1.4.0"
+    "textlint-scripts": "1.4.2"
   },
   "prettier": {
     "printWidth": 120,
