@@ -27,7 +27,7 @@ const する = {
         basic_form: "する"
     }
 };
-const report = context => {
+const report = (context) => {
     const { Syntax, RuleError, report } = context;
     return {
         [Syntax.Paragraph](node) {
@@ -47,13 +47,13 @@ const report = context => {
                 }
                 const sentences = CST.children[0].children;
                 const isSameNode = (resultsA, resultsB) => {
-                    return resultsA.some(resultA => {
-                        return resultsB.some(resultB => {
+                    return resultsA.some((resultA) => {
+                        return resultsB.some((resultB) => {
                             return resultB.index === resultA.index;
                         });
                     });
                 };
-                sentences.forEach(sentence => {
+                sentences.forEach((sentence) => {
                     const tariResults = matcher.matchCST(sentence, TARI);
                     const tariSuruResults = matcher.matchCST(sentence, TARI_SURU);
                     // `${動詞}${たり}` かつ `${動詞}${たり}${する}` の場合は除外
@@ -62,7 +62,7 @@ const report = context => {
                     }
                     if (tariResults.length === 1) {
                         const suru = matcher.matchCST(sentence, VERB);
-                        const afterSuru = suru.find(suru => {
+                        const afterSuru = suru.find((suru) => {
                             const firstToken = tariResults[0].nodeList[0];
                             const suruFirstToken = suru.nodeList[0];
                             const prevSuruNode = sentence.children[sentence.children.indexOf(suruFirstToken) - 1];

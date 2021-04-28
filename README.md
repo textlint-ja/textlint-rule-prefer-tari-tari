@@ -1,4 +1,4 @@
-# textlint-rule-prefer-tari-tari [![Build Status](https://travis-ci.org/textlint-ja/textlint-rule-prefer-tari-tari.svg?branch=master)](https://travis-ci.org/textlint-ja/textlint-rule-prefer-tari-tari)
+# textlint-rule-prefer-tari-tari [![Actions Status: test](https://github.com/textlint-ja/textlint-rule-prefer-tari-tari/workflows/test/badge.svg)](https://github.com/textlint-ja/textlint-rule-prefer-tari-tari/actions?query=workflow%3A"test")
 
 「〜たり〜たりする」をチェックするtextlintルール
 
